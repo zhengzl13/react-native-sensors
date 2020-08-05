@@ -6,7 +6,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -25,6 +26,7 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
   private double lastReading = (double) System.currentTimeMillis();
   private int interval;
   private Arguments arguments;
+  private int logLevel = 0;
 
   public Barometer(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -47,6 +49,11 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
   @ReactMethod
   public void setUpdateInterval(int newInterval) {
     this.interval = newInterval;
+  }
+
+  @ReactMethod
+  public void setLogLevel(int newLevel) {
+    this.logLevel = newLevel;
   }
 
 
